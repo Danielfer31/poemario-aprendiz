@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Poemario de un aprendiz</title>
+  <meta name="description" content="Poemario de un aprendiz, para Loraine.">
+  <meta name="theme-color" content="#0b1030">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div id="decor" aria-hidden="true"></div>
+
+  <main id="stage" aria-live="polite"></main>
+
+  <nav id="controls" aria-label="Navegación">
+    <button id="prev" class="ctl" aria-label="Poema anterior">‹</button>
+    <ol id="dots"></ol>
+    <button id="next" class="ctl" aria-label="Poema siguiente">›</button>
+    <button id="mute" class="ctl small" aria-label="Silenciar sonidos" aria-pressed="false">♪</button>
+  </nav>
+
+  <noscript><p class="noscript">Esta página necesita JavaScript para mostrar los poemas.</p></noscript>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
