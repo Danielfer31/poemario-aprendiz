@@ -289,7 +289,7 @@ const valid = poemas
 const cover = buildCover();
 const rooms = [
   { el: cover.room, hidden: false, label: "Portada" },
-  ...valid.map((p, n) => ({ el: buildPoem(p), hidden: false, label: `Poema ${n + 1}: ${p.titulo}` })),
+  ...valid.map((p, n) => ({ el: buildPoem(p), hidden: false, label: `Poema ${n + 1}: ${p.titulo}`, id: p.id })),
   { el: buildComing(), hidden: false, label: "Próximamente" },
   { el: buildSurprise(), hidden: true, surprise: true, label: "Sorpresa de cumpleaños" },
 ];
@@ -382,3 +382,8 @@ stage.addEventListener("touchend", (e) => {
 }, { passive: true });
 
 goTo(0, { silent: true });
+
+// Deep link: https://…/#sabor-a-ti opens that poem directly (used by the "nuevo recuerdo" email).
+const wantedId = decodeURIComponent(location.hash.slice(1));
+const wantedIndex = visible().findIndex((r) => r.id === wantedId);
+if (wantedIndex > 0) goTo(wantedIndex, { silent: true });
