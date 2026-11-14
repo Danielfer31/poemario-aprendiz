@@ -153,6 +153,7 @@ body {
 .tool.danger { border-color: rgba(197,104,63,.7); color: var(--terracotta); }
 .draw-login { display: grid; gap: 8px; padding: 12px; border-radius: 16px; background: rgba(11,16,48,.7); box-shadow: inset 0 0 0 1px rgba(232,184,102,.28); }
 .draw-login input { min-height: 40px; padding: 0 14px; border-radius: 12px; border: 1px solid rgba(232,184,102,.35); background: rgba(255,255,255,.06); color: var(--ink); font: 400 1rem var(--sans); }
+.draw-msg.is-error { color: #ffd2c2; background: rgba(197,104,63,.35); padding: 10px 12px; border-radius: 12px; font-style: normal; }
 .draw-msg { margin: 0; font: italic 300 .95rem/1.4 var(--serif); color: var(--ink-dim); }
 .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .art::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.12), transparent 55%); pointer-events: none; }
