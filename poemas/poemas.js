@@ -42,4 +42,27 @@ te creo a ti.
 Y por ti,
 aprendo.`,
   },
+  {
+    id: "sabor-a-ti",
+    titulo: "Sabor a ti",
+    fecha: "2026-11-14",
+    // Canción: «Sabor a Mí», Luis Miguel (álbum Romances, 1997).
+    spotify: "https://open.spotify.com/track/68zSzKkU28AfZvr5FkAUWT",
+    appleMusic: "https://music.apple.com/co/album/sabor-a-m%C3%AD/64825320?i=64825291",
+    imagen: "poemas/img/sabor-a-ti.webp",
+    texto: `Me cantas al odio,
+y oigo un ángel,
+No lo miro pero lo siento, como quisiera sentirte a ti
+Las notas
+Yo las noto, pero como si te quisiera notar a ti
+Ahi cerca
+A mi lado, siento las escalas que me acercan mas a ti
+Y me pregunto si que siento es asi de grave
+Que un sordo pueda mediante las canciones de amor, sentir como se ama
+Que es un beso, que es el verdadero amor.
+
+Quizas lo note, y los unicos álbumes que coleecionen no sean solos cds
+Si no estrofas, besos, abrazos, olores, sabores y recuerdos,
+Talvez no ganemos un grammy, pero hay algo que he ganado sin buscar y eso eres tu:`,
+  },
 ];
