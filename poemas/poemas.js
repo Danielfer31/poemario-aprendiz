@@ -65,4 +65,37 @@ Quizas lo note, y los unicos álbumes que coleecionen no sean solos cds
 Si no estrofas, besos, abrazos, olores, sabores y recuerdos,
 Talvez no ganemos un grammy, pero hay algo que he ganado sin buscar y eso eres tu:`,
   },
+  {
+    id: "sed-de-sol",
+    titulo: "Sed de sol",
+    fecha: "2026-11-17",
+    // Canción: «Ama De Mi Sol», Milo J (álbum La Vida Era Más Corta, 2025).
+    spotify: "https://open.spotify.com/track/4GKm1QaEr1tqJwUM0EsUl3",
+    appleMusic: "https://music.apple.com/co/album/ama-de-mi-sol/1839970139?i=1839970297",
+    imagen: "poemas/img/sed-de-sol.webp",
+    texto: `Me aplaca, me lastima, me deja seco.
+No encuentro agua y nada más me sacia.
+El calor y la temperatura suben por mi cuerpo;
+no encuentro control, ni sombra.
+
+El sol alumbra desde las seis, y aun en la noche la temperatura sube más.
+No deja de alumbrarme un solo momento, tampoco de calentarme.
+Me seco por ti; el agua es un manantial que se vuelve espejismo en el desierto.
+Dame algo, solo un poco de ti,
+apaga esta sed que tengo.
+Dame agua, dame ser, dame algo de ti que apague este calor
+o seré otra víctima sin nombre por el daño de otro.
+No quiero, no quiero ser otro más.
+Quiero ser yo y que seas tú:
+tú, el sol, la luna y las estrellas,
+y yo, aquel loco que no deja de verlas,
+que cada vez encuentra más fascinación al verlas.
+
+No sé si este texto sea "algo",
+pero lo que significa vale más que todos los astros.
+Según yo, una declaración, un descubrimiento
+que me hizo ver que el sol es el centro de mi universo.
+
+Serán palabras de un loco, sin sentido, pero con mucho sentimiento.`,
+  },
 ];
