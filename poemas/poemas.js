@@ -98,4 +98,27 @@ que me hizo ver que el sol es el centro de mi universo.
 
 Serán palabras de un loco, sin sentido, pero con mucho sentimiento.`,
   },
+  {
+    id: "dame-un-besito",
+    titulo: "Dame un besito",
+    fecha: "2026-11-18",
+    // Canción: «Dame un Besito», Silvestre Dangond y Juancho de la Espriella (álbum La Fama, 2006).
+    spotify: "https://open.spotify.com/track/5BRSSXrqZrvw7tDzmyW50t",
+    appleMusic: "https://music.apple.com/co/album/dame-un-besito/309680654?i=309680670",
+    imagen: "poemas/img/dame-un-besito.webp",
+    texto: `Dame uno,
+no, mejor dos.
+Si me das tres tal vez no me dé por vencido,
+pero el cuarto es el de la suerte,
+o tal vez cinco, como los sentidos.
+Aunque si fueran seis no me quejaría,
+pero imaginemos que sean siete, como los días de la semana,
+o que tal vez, en un ataque de locura, fueran ocho.
+Nueve, pero redondeemos a diez,
+y el diez no me gusta, mejor que sean veinte.
+Tal vez veinte se queden cortos, porque me volveré adicto,
+pero quién soy yo para negarme al placer,
+para negarme a tus besos,
+para negarme a ti.`,
+  },
 ];
