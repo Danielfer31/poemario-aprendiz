@@ -8,6 +8,7 @@ import { isBirthday } from "./lib/birthday.js";
 import { startStars } from "./lib/stars.js";
 import { startDecor } from "./lib/decor.js";
 import { attachDrawing } from "./lib/drawing.js";
+import { whatsappLink } from "./lib/whatsapp.js";
 import { createFirebaseSync, createMemorySync } from "./lib/sync.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -219,6 +220,18 @@ function buildSong(poema, room) {
   return song;
 }
 
+const WHATSAPP_PHONE = "573003473884";
+
+/** «Manda un besito»: opens WhatsApp with a prefilled message to Daniel. */
+function buildKiss(poema) {
+  const href = whatsappLink(WHATSAPP_PHONE, `Te mando un besito 💋 (desde «${poema.titulo}»)`);
+  const a = el("a", "kiss-btn", "Manda un besito 💋");
+  a.href = href ?? "#";
+  a.target = "_blank";
+  a.rel = "noopener";
+  return a;
+}
+
 function buildPoem(poema) {
   const room = el("section", "room poem");
   const grid = el("div", "room-inner poem-grid");
@@ -246,6 +259,7 @@ function buildPoem(poema) {
   if (sky) side.append(sky);
 
   side.append(buildSong(poema, room));
+  side.append(buildKiss(poema));
 
   grid.append(textCol, side);
   room.append(grid);
