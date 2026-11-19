@@ -1,6 +1,7 @@
 // Para agregar un poema: añade un objeto a esta lista y guarda su imagen en poemas/img/<id>.webp
 // fecha: "YYYY-MM-DD" (o null)   spotify / appleMusic: link de la canción (o null)   nota: opcional
 // Si pones los dos links, la página muestra un selector Spotify | Apple Music.
+// besito: true (opcional) muestra el botón «Manda un besito» en ese poema.
 export default [
   {
     id: "maestra",
@@ -106,6 +107,7 @@ Serán palabras de un loco, sin sentido, pero con mucho sentimiento.`,
     spotify: "https://open.spotify.com/track/5BRSSXrqZrvw7tDzmyW50t",
     appleMusic: "https://music.apple.com/co/album/dame-un-besito/309680654?i=309680670",
     imagen: "poemas/img/dame-un-besito.webp",
+    besito: true,
     texto: `Dame uno,
 no, mejor dos.
 Si me das tres tal vez no me dé por vencido,

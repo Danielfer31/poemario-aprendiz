@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Poemario de un aprendiz · libro</title>
+  <meta name="description" content="Poemario de un aprendiz, para Loraine. Un libro para hojear.">
+  <meta name="theme-color" content="#0b1030">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/garden.css">
+  <link rel="stylesheet" href="css/libro.css">
+</head>
+<body class="libro">
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <header id="topbar">
+    <a class="to-rooms" href="index.html">Ver como salas</a>
+    <button id="mute" class="ctl small" type="button" aria-label="Silenciar sonidos" aria-pressed="false">♪</button>
+  </header>
+
+  <main id="book-area">
+    <div id="book" aria-live="polite"></div>
+  </main>
+
+  <div id="garden" aria-label="Jardín: toca los peces y las flores"></div>
+
+  <div id="rotate">
+    <span class="rotate-icon" aria-hidden="true"></span>
+    <p class="rotate-title">Gira tu teléfono ✦</p>
+    <p class="rotate-line">Este libro se lee en vertical</p>
+  </div>
+
+  <noscript><p class="noscript">Esta página necesita JavaScript para mostrar los poemas.</p></noscript>
+  <script type="module" src="libro.js"></script>
+</body>
+</html>

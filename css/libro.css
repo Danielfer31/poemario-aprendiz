@@ -1,0 +1,250 @@
+/* Book version: one page at a time on a night sky, garden strip below.
+   Reuses tokens from style.css (--gold, --night-0, --serif, --sans). */
+:root {
+  --paper: #f5ecd9;
+  --paper-deep: #e9dcc0;
+  --paper-ink: #2b2140;
+  --paper-ink-dim: #6a5d78;
+  --gold-deep: #94661f;
+  --verse-size: 18px;
+  --verse-lh: 27px;
+  --paper-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .27  0 0 0 0 .16  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+body.libro {
+  height: 100vh; height: 100dvh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) 18vh;
+  grid-template-rows: auto minmax(0, 1fr) 18dvh;
+  overscroll-behavior: none;
+}
+
+/* ---------- top bar ---------- */
+#topbar {
+  position: relative; z-index: 4;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 36px; padding: 0 12px; box-sizing: content-box; padding-top: env(safe-area-inset-top);
+}
+.to-rooms {
+  font: 300 .7rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; padding: 10px 0; opacity: .75;
+}
+.to-rooms:hover, .to-rooms:focus-visible { opacity: 1; outline: none; text-decoration: underline; text-underline-offset: 4px; }
+#topbar .ctl.small { margin: 0; width: 32px; height: 32px; font-size: 1rem; }
+
+/* ---------- book ---------- */
+#book-area {
+  position: relative; z-index: 2; min-height: 0;
+  display: grid; place-items: center;
+}
+#book { margin: 0 auto; filter: drop-shadow(0 18px 40px rgba(0,0,0,.55)); }
+/* StPageFlip sets an inline max-width of two pages; one page wide keeps it in portrait (never a spread). */
+#book.stf__parent { max-width: var(--page-w) !important; }
+#book.stf__parent { touch-action: none; }
+
+#garden { position: relative; z-index: 3; }
+
+/* Pages: the library owns position/size/transform; we style the inside. */
+.page { overflow: hidden; color: var(--paper-ink); user-select: none; -webkit-user-select: none; }
+.page-inner {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: 24px 22px 34px;
+}
+.page-paper {
+  background-color: var(--paper);
+  background-image:
+    var(--paper-grain),
+    linear-gradient(to right, rgba(120,90,50,.16), rgba(120,90,50,0) 7%, rgba(120,90,50,0) 94%, rgba(120,90,50,.08)),
+    radial-gradient(120% 90% at 50% 40%, var(--paper) 55%, var(--paper-deep) 100%);
+}
+.folio {
+  position: absolute; left: 0; right: 0; bottom: 14px; text-align: center;
+  font: 300 .72rem/1 var(--sans); letter-spacing: .2em; color: var(--paper-ink-dim);
+}
+.cont {
+  position: absolute; right: 22px; bottom: 10px;
+  font: 400 1.3rem/1 var(--serif); color: var(--gold-deep);
+}
+.running-head {
+  margin: 0 0 14px; text-align: center;
+  font: 300 .66rem/1.2 var(--sans); letter-spacing: .32em; text-transform: uppercase; color: var(--paper-ink-dim);
+}
+.page-label {
+  margin: 0 0 12px; text-align: center;
+  font: italic 300 1.35rem/1.1 var(--serif); color: var(--gold-deep);
+}
+
+/* ---------- poem pages ---------- */
+.page .poem-head { margin-bottom: 18px; }
+.page .poem-title {
+  font: italic 300 30px/1.05 var(--serif); color: #5a3418; margin: 0 0 8px; text-wrap: balance;
+}
+.page .poem-date { font: 300 .68rem/1 var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-deep); margin: 0; }
+.verses { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+.page .stanza { margin: 0 0 var(--verse-lh); }
+.page .stanza:last-child { margin-bottom: 0; }
+.page .verse {
+  display: block; opacity: 1;
+  font: 400 var(--verse-size)/var(--verse-lh) var(--serif); color: var(--paper-ink);
+  padding-left: 1em; text-indent: -1em; /* wrapped verses hang like a printed book */
+}
+/* No verse entrance here: the page curl reveals printed text, and a fade would flash under it. */
+@keyframes book-verse-in {
+  from { opacity: 0; transform: translateY(6px); filter: blur(3px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.page .poem-note { font: italic 300 1rem/1.45 var(--serif); color: var(--paper-ink-dim); margin: 0; text-align: center; }
+
+/* ---------- section pages: one section per page ---------- */
+.page-section .running-head { margin-bottom: 4px; }
+.page-section .page-label { margin: 0; font-size: 1.6rem; }
+.section-body {
+  flex: 1 1 auto; min-height: 0;
+  display: flex; flex-direction: column; justify-content: center; gap: 16px;
+}
+.section-body > * { flex-shrink: 0; } /* never squeeze a section: let fitSections see the overflow */
+
+/* sky */
+.page .sky-card {
+  padding: 18px 14px 16px; border-radius: 18px; color: var(--ink);
+  background: linear-gradient(160deg, #2a2160, #0e1338 70%); -webkit-backdrop-filter: none; backdrop-filter: none;
+  box-shadow: 0 10px 26px rgba(43,33,64,.35), inset 0 0 0 1px rgba(232,184,102,.3);
+}
+.page .sky-body { grid-template-columns: 1fr; gap: 14px; }
+.page .sky-wheel { width: min(220px, 100%, 32vh); }
+.page .sky-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.page .chip { padding: 4px 9px; gap: 5px; font-size: .78rem; line-height: 1.2; white-space: nowrap; }
+.page .sky-frame { display: none; } /* the ornate frame is drawn for the wide room card; on a page it floats mid-card */
+.page .chip-glyph { font-size: 1rem; line-height: 1; width: 1.1em; }
+.page .sky-line { margin-top: 14px; font-size: 1.05rem; line-height: 1.35; }
+
+/* song */
+.page .song-tabs { margin-bottom: 12px; }
+.page .song-tab { min-height: 40px; color: var(--paper-ink-dim); background: rgba(255,255,255,.4); border-color: rgba(148,102,31,.4); font-size: .7rem; }
+.page .song-tab[aria-pressed="true"] { color: var(--paper); background: var(--gold-deep); border-color: var(--gold-deep); }
+.page .song iframe { display: block; } /* full player height comes from buildSong (152 / 175px) */
+.page .song-stage { min-height: 175px; border-radius: 14px; }
+.page .song-stage:empty {
+  display: grid; place-items: center; padding: 0 16px; text-align: center;
+  background: linear-gradient(135deg, rgba(43,33,64,.92), rgba(91,63,160,.75));
+  box-shadow: inset 0 0 0 1px rgba(232,184,102,.3);
+}
+.page .song-stage:empty::before {
+  content: "♪  " attr(data-title);
+  font: italic 300 1.25rem/1.3 var(--serif); color: var(--gold-soft);
+}
+.page .song-pending { color: var(--paper-ink-dim); border-color: rgba(148,102,31,.45); font-size: 1.1rem; text-align: center; }
+
+/* for you: the drawing keeps the room version's 16:10 frame so strokes land in the same place */
+.page .art { border-radius: 14px; box-shadow: 0 12px 30px rgba(43,33,64,.38), inset 0 0 0 1px rgba(232,184,102,.35); }
+.page .kiss-btn { margin: 4px 0 0; padding: 16px 18px; touch-action: manipulation; }
+
+/* ---------- centered pages (coming, surprise) ---------- */
+.page-centered .page-inner { justify-content: center; align-items: center; text-align: center; gap: 0; }
+.page-centered .date { font: 300 .72rem/1 var(--sans); letter-spacing: .4em; text-transform: uppercase; color: var(--gold-deep); margin: 0 0 18px; }
+.page-centered h2 { font: italic 300 2.3rem/1.05 var(--serif); color: #5a3418; margin: 0 0 14px; text-wrap: balance; }
+.page-centered p { font: italic 300 1.15rem/1.5 var(--serif); color: var(--paper-ink); margin: 0 auto; max-width: 24ch; }
+
+/* sealed envelope */
+.envelope {
+  position: relative; width: 210px; height: 138px; margin-bottom: 18px; border-radius: 6px;
+  background: linear-gradient(160deg, #efe1c4, #dcc59a);
+  box-shadow: 0 10px 24px rgba(43,33,64,.25), inset 0 0 0 1px rgba(148,102,31,.3);
+  perspective: 600px;
+}
+.envelope::before { /* bottom fold lines */
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background:
+    linear-gradient(to top right, transparent 49.4%, rgba(148,102,31,.25) 50%, transparent 50.6%),
+    linear-gradient(to top left, transparent 49.4%, rgba(148,102,31,.25) 50%, transparent 50.6%);
+}
+.envelope-flap {
+  position: absolute; left: 0; right: 0; top: 0; height: 62%;
+  background: linear-gradient(180deg, #e6d3ad, #d6bd8c);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: 50% 0; transition: transform .9s ease;
+}
+.envelope-seal {
+  position: absolute; left: 50%; top: 62%; width: 40px; height: 40px; margin: -20px 0 0 -20px;
+  display: grid; place-items: center; border-radius: 50%;
+  font: 400 1.1rem/1 var(--serif); color: #f7d9a0;
+  background: radial-gradient(circle at 35% 30%, #d77c4e, #9c3f1d 70%);
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.sealed-note { font: italic 300 1rem/1.4 var(--serif) !important; color: var(--paper-ink-dim) !important; }
+.letter { display: none; width: 100%; }
+.page-surprise.is-open .envelope { height: 0; margin: 0; opacity: 0; box-shadow: none; }
+.page-surprise.is-open .sealed-note { display: none; }
+.page-surprise.is-open .letter { display: block; animation: book-verse-in 1.2s ease both; }
+.page-surprise.is-open h2 { font-size: 2.6rem; color: #7a3a16; text-shadow: 0 0 24px rgba(232,184,102,.55); }
+
+/* ---------- hard covers ---------- */
+.page-cover, .page-back {
+  color: var(--ink);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(91,63,160,.55), transparent 60%),
+    linear-gradient(160deg, #1d1650, #0b1030 60%, #070a22);
+  box-shadow: inset 0 0 0 1px rgba(232,184,102,.35), inset 0 0 0 9px rgba(7,10,34,.9), inset 0 0 0 10px rgba(232,184,102,.45);
+}
+.page-cover .page-inner, .page-back .page-inner { justify-content: center; align-items: center; text-align: center; padding: 36px 30px; }
+.page-cover .eyebrow { margin-bottom: 1.3rem; font-size: .72rem; }
+.cover-title {
+  margin: 0; font: italic 300 3rem/1 var(--serif); color: var(--gold-soft);
+  text-shadow: 0 0 30px rgba(232,184,102,.4); text-wrap: balance;
+  cursor: default; touch-action: manipulation;
+}
+.page-cover .sub { font: italic 300 1.1rem/1.45 var(--serif); color: var(--ink-dim); margin: 1.3rem auto 0; max-width: 24ch; }
+.page-cover .birthday-line { margin: 1.2rem 0 0; }
+.cover-hint {
+  position: absolute; left: 0; right: 0; bottom: 26px; margin: 0;
+  font: 300 .62rem/1 var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--gold); opacity: .7;
+}
+.corner-hint {
+  position: absolute; right: 0; bottom: 0; width: 34px; height: 34px; pointer-events: none;
+  background: linear-gradient(135deg, transparent 50%, rgba(243,217,164,.5) 50%, rgba(232,184,102,.15));
+  animation: corner-peek 2.6s ease-in-out infinite;
+}
+@keyframes corner-peek { 0%, 100% { transform: scale(.7); opacity: .4; } 50% { transform: scale(1.05); opacity: 1; } }
+.back-mark { font: 400 1.6rem/1 var(--serif); color: var(--gold); margin: 0 0 12px; }
+.back-title { font: italic 300 1rem/1.3 var(--serif); color: var(--ink-dim); margin: 0; letter-spacing: .04em; }
+
+/* Offscreen measuring host: same page box as the book. */
+.measure-host { position: absolute; left: -9999px; top: 0; visibility: hidden; pointer-events: none; }
+.measure-host .page { position: relative; width: var(--page-w); height: var(--page-h); margin-bottom: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-surprise.is-open .letter, .corner-hint { animation: none; }
+  .envelope-flap, .envelope-seal { transition: none; }
+}
+
+/* Compact fallback for a section page that does not fit (short screens); set by fitSections(). */
+.page.is-tight .page-inner { padding-top: 18px; padding-bottom: 30px; }
+.page.is-tight .page-label { font-size: 1.35rem; }
+.page.is-tight .section-body { gap: 10px; }
+.page.is-tight .sky-card { padding: 16px 12px 14px; }
+.page.is-tight .sky-body { grid-template-columns: 136px 1fr; gap: 10px; }
+.page.is-tight .sky-wheel { width: 136px; }
+.page.is-tight .sky-chips { display: grid; grid-template-columns: 1fr; gap: 4px; }
+.page.is-tight .chip { padding: 3px 4px; font-size: .78rem; white-space: normal; box-shadow: none; background: transparent; }
+.page.is-tight .sky-line { margin-top: 12px; font-size: 1rem; }
+
+/* ---------- phone on its side: ask her to turn it ---------- */
+html { overflow: hidden; } /* the book never scrolls the page */
+#rotate { display: none; }
+@media (orientation: landscape) and (max-height: 499px) {
+  #rotate {
+    position: fixed; inset: 0; z-index: 20;
+    display: grid; place-items: center; align-content: center; gap: 14px; padding: 24px; text-align: center;
+    background: radial-gradient(120% 90% at 50% 0%, var(--night-2) 0%, var(--night-1) 45%, var(--night-0) 100%);
+  }
+  .rotate-icon {
+    width: 34px; height: 54px; border: 2px solid var(--gold); border-radius: 8px;
+    animation: rotate-hint 2.4s ease-in-out infinite;
+  }
+  .rotate-title { margin: 0; font: italic 300 2.2rem/1.1 var(--serif); color: var(--gold-soft); text-shadow: 0 0 30px rgba(232,184,102,.35); }
+  .rotate-line { margin: 0; font: 300 .75rem/1.4 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--ink-dim); }
+}
+@keyframes rotate-hint { 0%, 30% { transform: rotate(90deg); } 60%, 100% { transform: rotate(0); } }
+@media (prefers-reduced-motion: reduce) { .rotate-icon { animation: none; } }
