@@ -123,4 +123,29 @@ pero quién soy yo para negarme al placer,
 para negarme a tus besos,
 para negarme a ti.`,
   },
+  {
+    id: "luna-y-lunatico",
+    titulo: "Luna y lunático",
+    fecha: "2026-11-25",
+    // Canción: «A la luz de la luna», Indio Solari y Los Fundamentalistas del Aire Acondicionado.
+    spotify: "https://open.spotify.com/track/3XdBTCAFUc3LW9ObmiAkIx",
+    appleMusic: "https://music.apple.com/mx/song/a-la-luz-de-la-luna/1722315298",
+    imagen: "poemas/img/luna-y-lunatico.webp",
+    texto: `No despego los ojos
+Tampoco miro otra cosa
+Me dejas hipnotizado
+Impactado y hasta preso
+Me quedo mudo y solo te aprecio
+
+En las noches como hoy es cuando más disfruto verte, no me canso de hacerlo, y verte tan completa solo me impacta más,
+La luna, gira sobre la tierra,
+Tú giras sobre mi,
+Arrastras ni sentir,
+Tu querer, me atrae,
+Más fuerte que la gravedad estás tu
+Quedo preso
+Hipnotizado
+Y solo me queda verte
+Tu una luna, y yo un lunático.`,
+  },
 ];
