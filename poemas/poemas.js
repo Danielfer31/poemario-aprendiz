@@ -139,13 +139,13 @@ Me quedo mudo y solo te aprecio
 
 En las noches como hoy es cuando más disfruto verte, no me canso de hacerlo, y verte tan completa solo me impacta más,
 La luna, gira sobre la tierra,
-Tú giras sobre mi,
-Arrastras ni sentir,
+Tú giras sobre mí,
+Arrastras mi sentir,
 Tu querer, me atrae,
-Más fuerte que la gravedad estás tu
+Más fuerte que la gravedad estás tú
 Quedo preso
 Hipnotizado
 Y solo me queda verte
-Tu una luna, y yo un lunático.`,
+Tú una luna, y yo un lunático.`,
   },
 ];
